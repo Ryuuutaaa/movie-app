@@ -1,28 +1,26 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { useRouter } from "next/router";
 import Link from "next/link";
+import axios from "axios";
 
 const AnotherCollection = () => {
-  const [movies, setMovies] = useState([]);
   const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+  const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
+  const [movies, setMovies] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-        );
-        setMovies(response.data.results);
-      } catch (error) {
-        console.error("Error fetching popular movies:", error);
-      }
-    };
-
-    fetchMovies();
+    fetch(API_URL)
+      .then((res) => res.json())
+      .then((data) => setMovies(data.results));
   }, []);
 
+  const openOverview = (movie) => {
+    router.push(`/movie/${movie.id}`);
+  };
+
   return (
-    <section>
+    <section id="popular">
       <div className="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
         <header className="text-center">
           <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
@@ -39,7 +37,7 @@ const AnotherCollection = () => {
         <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
           {movies.map((movie) => (
             <li key={movie.id} className="my-3">
-              <Link href={`/MovieDetail/${movie.id}`}>
+              <Link href={`/movie/${movie.id}`}>
                 <div className="block overflow-hidden group" passHref>
                   <img
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
