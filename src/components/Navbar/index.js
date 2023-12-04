@@ -9,7 +9,7 @@ const Navbar = () => {
     { href: "#", label: "Category" },
   ];
   return (
-    <header className="sm:px-8 px-4 py-2 z-10 w-full fixed bg-black">
+    <header className="sm:px-8 px-4 py-2 z-10 w-full fixed bg-black ">
       <nav className="flex justify-between items-center max-container ">
         <div className="flex justify-between items-center mt-3">
           <Link href="/" className="text-3xl font-bold mr-16 text-red-600">

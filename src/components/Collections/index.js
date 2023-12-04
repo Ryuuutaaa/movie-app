@@ -5,14 +5,15 @@ import axios from "axios";
 
 const AnotherCollection = () => {
   const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-  const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
+  const page = 8;
+  const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${page}`;
   const [movies, setMovies] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
     fetch(API_URL)
       .then((res) => res.json())
-      .then((data) => setMovies(data.results));
+      .then((data) => setMovies(data.results.slice(0, 8)));
   }, []);
 
   const openOverview = (movie) => {
@@ -22,16 +23,10 @@ const AnotherCollection = () => {
   return (
     <section id="popular">
       <div className="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
-        <header className="text-center">
-          <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
+        <header className="text-start">
+          <h2 className="text-xl font-bold text-white  sm:text-3xl">
             Movie Collection
           </h2>
-
-          <p className="max-w-md mx-auto mt-4 text-gray-500">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
-            praesentium cumque iure dicta incidunt est ipsam, officia dolor
-            fugit natus?
-          </p>
         </header>
 
         <ul className="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
