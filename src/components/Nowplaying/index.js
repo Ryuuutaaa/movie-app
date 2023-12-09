@@ -5,7 +5,7 @@ import "swiper/swiper-bundle.css";
 
 import { FreeMode, Pagination } from "swiper/modules";
 
-const Upcoming = ({ upcomingMovies, genres }) => {
+const Nowplaying = ({ genres, nowplayingMovies }) => {
   return (
     <>
       <Swiper
@@ -17,7 +17,7 @@ const Upcoming = ({ upcomingMovies, genres }) => {
         className="mySwiper"
       >
         <section>
-          {upcomingMovies.map((movie) => (
+          {nowplayingMovies.map((movie) => (
             <SwiperSlide key={movie.id}>
               <div>
                 <Link
@@ -36,7 +36,6 @@ const Upcoming = ({ upcomingMovies, genres }) => {
                       <h3 className="mt-4 text-xl font-medium sm:text-2xl">
                         {movie.title}
                       </h3>
-                      <span> Date: {movie.release_date}</span>
 
                       {/* Tambahkan genre ke dalam elemen <p> */}
                       <div className="mt-2 text-sm flex justify-center">
@@ -61,4 +60,4 @@ const Upcoming = ({ upcomingMovies, genres }) => {
   );
 };
 
-export default Upcoming;
+export default Nowplaying;
