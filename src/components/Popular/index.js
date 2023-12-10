@@ -33,17 +33,17 @@ const Popular = ({ movies, genres }) => {
                     </div>
 
                     <div className="absolute opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8 text-white">
-                      <h3 className="mt-4 text-xl font-medium sm:text-2xl">
+                      <h3 className="text-xl font-medium sm:text-2xl text-purple-800">
                         {movie.title}
                       </h3>
 
                       {/* Tambahkan genre ke dalam elemen <p> */}
-                      <div className="mt-2 text-sm flex justify-center">
+                      <div className="text-sm flex justify-center">
                         {movie.genre_ids.map((genreId) => {
                           const genre = genres.find((g) => g.id === genreId);
                           return genre ? (
-                            <p key={genre.id} className="text-center">
-                              {genre.name + ","}
+                            <p key={genre.id} className="text-center mx-1">
+                              {genre.name}
                             </p>
                           ) : null;
                         })}

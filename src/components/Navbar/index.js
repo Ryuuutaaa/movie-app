@@ -1,10 +1,12 @@
 import Link from "next/link";
-import Search from "../Search";
+import SearchBar from "./SearchBar";
+
 const { useState, useEffect } = require("react");
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/#popular", label: "Popular" },
@@ -72,7 +74,6 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <Search />
         <div className="mt-3 flex gap-2 text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24"></div>
         <div
           className="hidden max-lg:block cursor-pointer"
@@ -80,6 +81,9 @@ const Navbar = () => {
             setIsMenuOpen(!isMenuOpen);
           }}
         ></div>
+        <div className="w-80">
+          <SearchBar />
+        </div>
       </nav>
     </header>
   );

@@ -3,8 +3,10 @@ import Category from "@/components/Category";
 import Landing from "@/components/Landing";
 import Navbar from "@/components/Navbar";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
 import "swiper/swiper-bundle.css";
+
 import Popular from "@/components/Popular";
 import Upcoming from "@/components/Upcoming";
 import Toprated from "@/components/Toprated";
@@ -106,7 +108,7 @@ const Home = () => {
       <Navbar />
       <Landing movies={movies} />
       <div className="my-20">
-        <h3 className="text-2xl font-bold">Popular</h3>
+        <h3 className="ms-5 text-2xl font-bold">Popular</h3>
         <Popular
           movies={movies}
           genres={genres}
@@ -117,17 +119,17 @@ const Home = () => {
       </div>
 
       <div className="my-20">
-        <h3 className="text-2xl font-bold">Upcoming</h3>
+        <h3 className="ms-5 text-2xl font-bold">Upcoming</h3>
         <Upcoming genres={genres} upcomingMovies={upcomingMovies} />
       </div>
 
       <div className="my-20">
-        <h3 className="text-2xl font-bold">Top Rated</h3>
+        <h3 className="ms-5 text-2xl font-bold">Top Rated</h3>
         <Toprated genres={genres} topratedMovies={topratedMovies} />
       </div>
 
       <div className="my-20">
-        <h3 className="text-2xl font-bold">Now Playing</h3>
+        <h3 className="ms-5 text-2xl font-bold">Now Playing</h3>
         <Nowplaying genres={genres} nowplayingMovies={nowplayingMovies} />
       </div>
 

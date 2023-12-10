@@ -33,7 +33,7 @@ const Upcoming = ({ upcomingMovies, genres }) => {
                     </div>
 
                     <div className="absolute opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8 text-white">
-                      <h3 className="mt-4 text-xl font-medium sm:text-2xl">
+                      <h3 className="mt-4 text-xl font-medium sm:text-2xl text-purple-800">
                         {movie.title}
                       </h3>
                       <span> Date: {movie.release_date}</span>
